@@ -1,0 +1,62 @@
+@pytest.mark.optional_audio_capture
+    def test_hfp_a2dp_audio_verification(self, bt_source, sinkParams, adb, frontdoor, btNotification,
+                                    sinkFixture, request, CaptureDevice, captureParams):
+        logger.info("TEST: test_hfp_audio_verification")
+
+        self.testSourceAudioFile = "SampleMusic/testfile_16k_2bPCM_2000Hz_10s.wav"
+
+        self.initialize_hfp_test(adb, captureParams, sinkFixture, CaptureDevice)
+
+        # Connect and wait for HFP profile connection
+        hp.connect_and_wait_for_profile_connected(sinkFixture, btNotification, frontdoor)
+
+        request.addfinalizer(functools.partial(self.tearDown_hfp, frontdoor, btNotification,
+                                               sinkFixture, adb, resetCodecType=True))
+
+        hp.send_and_check_audio_output_prepared(sinkFixture)
+
+        # Set HFAG Codec and Validate
+        hp.send_and_check_hfag_codec_config(HFAGCodecType.HFAG_CODEC_WB, adb, self.sinkMacAddr)
+
+        # start audio call		
+        hp.start_hfag_call_and_check(frontdoor, btNotification, sinkFixture, self.devInputFile, self.devOutputFile)
+
+        time.sleep(0.5)
+        hp.capture_and_validate_audio_one_frequency_FFT(CaptureDevice, self.capture_channel_list, self.testSourceAudioFile,
+                                                        output_file="hfpVerification" + HFAGCodecType.HFAG_CODEC_WB, period_size=512)
+        # stop call
+        hp.stop_hfag_call_and_check(frontdoor, btNotification, sinkFixture)
+
+	logger.info("TEST: test_a2dp_audio_play")
+
+        use_capture = self.initialize_a2dp_capture_test("testfile_44.1k_2bPCM_500Hz_1000Hz_10s_stereo.wav", captureParams, sinkFixture, CaptureDevice)
+        if CommonUtils.USE_AAC_CODEC and use_capture:
+            pytest.skip("Skipped, AAC codec selected with capture test")
+
+        current_codec = self.set_codec_connect_and_check(sinkFixture, btNotification, frontdoor, adb, 44100)
+
+        request.addfinalizer(functools.partial(self.tearDown_a2dp, frontdoor, btNotification,
+                                               sinkFixture, request, apClientFixture))
+
+        hp.send_and_check_audio_output_prepared(sinkFixture)
+
+        stream_url = hp.prepare_http_server_url(HTTPServer, request,"testfile_44.1k_2bPCM_500Hz_1000Hz_10s_stereo.wav")
+        logger.info("stream_url = %s" % stream_url)
+        request.mainUrlUuid = hp.play_stream(stream_url, apClientFixture, auxURL=False, playback_volume=10)
+
+        # wait for playing stream state
+        sinkFixture.check_audio_stream_status(AudioStreamType.MUSIC, AudioStreamState.PLAYING,
+                                              AudioStreamDuckedState.FRONTED)
+        # Set music volume
+        sinkFixture.set_volume(100)
+
+        a2dpCodec = sinkFixture.check_audio_music_codec(expected_codec=current_codec)
+        assert a2dpCodec, "Unexpected A2DP music codec"
+
+        hp.capture_and_validate_audio_one_frequency_FFT(CaptureDevice, self.capture_channel_list, self.testSourceAudioFile,
+                                          output_file="a2dp_" + current_codec + "_" + str(sample_rate), ignore_duration=self.capture_ignore_duration_s)
+
+  
+
+
+
