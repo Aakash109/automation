@@ -1,0 +1,79 @@
+conan user
+
+conan config install git@github.com:BoseCorp/SpitfireConanConfig.git
+
+conan install . -u -pr smalls_c1 -b outdated -o SpitfireCore:include_qc_charger=False
+
+conan build .
+
+python -m venv testEnv
+testEnv\Scripts\activate
+
+create configuration file : my_smalls_config.json
+
+
+netsh lan show interfaces : use GUID  in configuration
+add other configuration as per readme.txt
+
+
+python -m pytest --config=my_smalls_config.json -sv test_a2dp_play.py -k test_a2dp_audio_play
+
+
+https://github.com/BoseCorp/SpitfireAudioAutomation/blob/master/Tests/README_Jenkins_automation.md
+
+
+python -m pytest test_a2dp_play.py --config=<my_smalls_config.py> -sv --local_proto_cache=..\python_api
+
+
+C:\Users\111440\SpitfireWorkspace\testEnv\Scripts\activate
+
+
+			python -m pytest --config=my_smalls_config.json -sv test_a2dp_play.py -k test_a2dp_audio_play --local_proto_cache=..\python_api --logreadlog
+			python -m pytest --config=my_smalls_config.json -sv test_hfp_play.py -k test_hfp_audio_verification --local_proto_cache=..\python_api --logreadlog
+Two test: 	python -m pytest --config=my_smalls_config.json -sv test_a2dp_play.py test_hfp_play.py -k "test_a2dp_audio_play or test_hfp_audio_verification" --local_proto_cache=..\python_api
+
+python -m pytest --config=my_smalls_config.json -sv test_a2dp_play.py -k test_a2dp_hfp_audio_verify --local_proto_cache=..\python_api --logreadlog
+
+test_a2dp_hfp_audio_verify
+
+
+
+
+Flipper connecting wifi:
+ tap-command network wifi profiles add wearable_5G WPA_OR_WPA2 einfochips
+ tap-command network wifi profiles add wearable_2.4G WPA_OR_WPA2 einfochips
+ tap-command network wifi status
+ 
+ 
+ 
+ 
+ 
+polycomm command:
+
+bt list
+bt devices
+bt state
+bt.start hs
+aud.prepare 1 
+ 
+ cor.db bind, aud,usb,5
+ 
+ 
+Spitfire_Automation_Windows.groovy
+ -checkout audio automation package
+ -install and build
+ -virtual environment
+ -Firmware update
+ -runtest
+ -as per test result : success , failure , unstable , aborted , cleanup  
+ 
+ 
+->Git command
+-git init   //initialise git repo
+-git add .  //add all file to git repo
+-git status //status of working tree
+-git commit //comit changes
+-git push   //push to remote repo
+-git pull   //pull from remot repo
+-git clone  //clone repo into a new directory
+
