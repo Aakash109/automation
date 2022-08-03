@@ -1,0 +1,1035 @@
+
+(testEnv) C:\Users\111440\SpitfireWorkspace\SpitfireAudioAutomation\Tests>python -m pytest --config=my_smalls_config.json -sv test_tone_play.py -k test_tone_play_synchronous_after_peer_connect
+[I Aug-03 12:28:15.946 bmap_plugin:72] bmap_version=None, bmap_build=None, bmap_branch=None
+C:\Users\111440\SpitfireWorkspace\testEnv\lib\site-packages\jsonschema\validators.py:928: DeprecationWarning: The metaschema specified by $schema was not found. Using the latest draft to validate, but this will raise an error in the future.
+  cls = validator_for(schema)
+[I 2022-08-03 12:28:16,030 conftest:0147] [:(] Getting adb communication object for ba8bcc5
+[D 2022-08-03 12:28:18,068 rivieraCommunication:0204] [:(] setCommunicationDetail
+[D 2022-08-03 12:28:18,068 rivieraCommunication:0206] [:(] Adb get devices
+[D 2022-08-03 12:28:18,121 rivieraCommunication:0211] [:(] Adb set target device
+[D 2022-08-03 12:28:18,121 rivieraCommunication:0214] [:(] Adb check target device is set
+[D 2022-08-03 12:28:18,184 rivieraCommunication:0330] [:(] Device found : ba8bcc5
+[I 2022-08-03 12:28:18,184 rivieraCommunication:0223] [:(] Connected to device: ba8bcc5
+[I 2022-08-03 12:28:18,190 conftest:0150] [:(] Done getting adb communication object for ba8bcc5
+[I 2022-08-03 12:28:18,190 rivieraCommunication:0435] [:(] Get IP address with ADB connection
+[I 2022-08-03 12:28:18,190 rivieraCommunication:0467] [:(] Get available network interfaces with ADB shell
+[D 2022-08-03 12:28:18,190 rivieraCommunication:0301] [:(] Executing ADB shell(device): ifconfig | sed 's/[     ].*//;/^$/d'
+[D 2022-08-03 12:28:18,237 rivieraCommunication:0470] [:(] Available Network Interfaces: '['eth0', 'lo', 'wlan0']'
+[D 2022-08-03 12:28:18,237 rivieraCommunication:0301] [:(] Executing ADB shell(device): ifconfig eth0 | grep 'inet addr:' | awk -F' ' '{print $2}' | awk -F':' '{print $2}'
+[D 2022-08-03 12:28:18,268 rivieraCommunication:0301] [:(] Executing ADB shell(device): ifconfig wlan0 | grep 'inet addr:' | awk -F' ' '{print $2}' | awk -F':' '{print $2}'
+[I 2022-08-03 12:28:18,322 conftest:1010] [:(] ip address: 10.26.138.57
+[D 2022-08-03 12:28:18,322 rivieraCommunication:0301] [:(] Executing ADB shell(device): iwlist wlan0 frequency | grep 'Current Frequency:2'
+[I 2022-08-03 12:28:18,353 conftest:1020] [:(] WiFi network is configured into 2G network
+[I 2022-08-03 12:28:18,353 conftest:0859] [:(] clearWiFiProfiles
+[I 2022-08-03 12:28:18,353 conftest:0147] [:(] Getting adb communication object for ba8bcc5
+[D 2022-08-03 12:28:20,394 rivieraCommunication:0204] [:(] setCommunicationDetail
+[D 2022-08-03 12:28:20,394 rivieraCommunication:0206] [:(] Adb get devices
+[D 2022-08-03 12:28:20,415 rivieraCommunication:0211] [:(] Adb set target device
+[D 2022-08-03 12:28:20,415 rivieraCommunication:0214] [:(] Adb check target device is set
+[D 2022-08-03 12:28:20,478 rivieraCommunication:0330] [:(] Device found : ba8bcc5
+[I 2022-08-03 12:28:20,478 rivieraCommunication:0223] [:(] Connected to device: ba8bcc5
+[I 2022-08-03 12:28:20,478 conftest:0150] [:(] Done getting adb communication object for ba8bcc5
+[I 2022-08-03 12:28:20,478 conftest:0787] [:(] Try to disable InActivityTimer for device: ba8bcc5
+[D 2022-08-03 12:28:20,478 rivieraUtils:0104] [:(] Initialize connection with ADB
+[D 2022-08-03 12:28:22,516 rivieraCommunication:0204] [:(] setCommunicationDetail
+[D 2022-08-03 12:28:22,516 rivieraCommunication:0206] [:(] Adb get devices
+[D 2022-08-03 12:28:22,554 rivieraCommunication:0211] [:(] Adb set target device
+[D 2022-08-03 12:28:22,554 rivieraCommunication:0214] [:(] Adb check target device is set
+[D 2022-08-03 12:28:22,623 rivieraCommunication:0330] [:(] Device found : ba8bcc5
+[I 2022-08-03 12:28:22,623 rivieraCommunication:0223] [:(] Connected to device: ba8bcc5
+[D 2022-08-03 12:28:22,623 rivieraCommunication:0301] [:(] Executing ADB shell(device): cat /sys/devices/soc0/machine
+[I 2022-08-03 12:28:22,685 rivieraUtils:1662] [:(] disable_no_audio_and_network_inactive_timeout
+[D 2022-08-03 12:28:22,685 rivieraCommunication:0301] [:(] Executing ADB shell(device): grep -ie '\"NoAudioTimeout\":\s*0' /opt/Bose/etc/InActivityTimer.json
+[I 2022-08-03 12:28:22,738 rivieraUtils:1617] [:(] Updating NoAudioTimeout to 0 in /opt/Bose/etc/InActivityTimer.json
+[D 2022-08-03 12:28:22,738 rivieraCommunication:0301] [:(] Executing ADB shell(device): cat /opt/Bose/etc/InActivityTimer.json
+[I 2022-08-03 12:28:22,785 rivieraUtils:1642] [:(] NoAudioTimeout is already 0!
+[D 2022-08-03 12:28:22,785 rivieraCommunication:0301] [:(] Executing ADB shell(device): grep -ie '\"NoNetworkConfiguredTimeout\":\s*0' /opt/Bose/etc/InActivityTimer.json
+[I 2022-08-03 12:28:22,870 rivieraUtils:1617] [:(] Updating NoNetworkConfiguredTimeout to 0 in /opt/Bose/etc/InActivityTimer.json
+[D 2022-08-03 12:28:22,870 rivieraCommunication:0301] [:(] Executing ADB shell(device): cat /opt/Bose/etc/InActivityTimer.json
+[I 2022-08-03 12:28:22,923 rivieraUtils:1642] [:(] NoNetworkConfiguredTimeout is already 0!
+[I 2022-08-03 12:28:22,923 rivieraUtils:1733] [:(] Removing localHost from services.json
+[D 2022-08-03 12:28:22,923 rivieraCommunication:0301] [:(] Executing ADB shell(device): grep localhost /opt/Bose/etc/services.json
+[D 2022-08-03 12:28:22,986 rivieraCommunication:0301] [:(] Executing ADB shell(device): grep stream:APServer /opt/Bose/etc/services.json
+[I 2022-08-03 12:28:23,039 rivieraUtils:1746] [:(] Dont need to remove localhost from services.json
+[D 2022-08-03 12:28:23,039 rivieraUtils:1786] [:(] Disabling frontdoor JWT and Policy check
+[D 2022-08-03 12:28:23,039 rivieraCommunication:0301] [:(] Executing ADB shell(device): grep -ie '\"disableJWT\":\s*True' /opt/Bose/etc/FrontDoorWSSCfg.json
+[I 2022-08-03 12:28:23,124 rivieraUtils:1617] [:(] Updating disableJWT to True in /opt/Bose/etc/FrontDoorWSSCfg.json
+[D 2022-08-03 12:28:23,124 rivieraCommunication:0301] [:(] Executing ADB shell(device): cat /opt/Bose/etc/FrontDoorWSSCfg.json
+[I 2022-08-03 12:28:23,186 rivieraUtils:1642] [:(] disableJWT is already True!
+[D 2022-08-03 12:28:23,186 rivieraCommunication:0301] [:(] Executing ADB shell(device): grep -ie '\"disablePolicyCheck\":\s*True' /opt/Bose/etc/FrontDoorWSSCfg.json
+[I 2022-08-03 12:28:23,240 rivieraUtils:1617] [:(] Updating disablePolicyCheck to True in /opt/Bose/etc/FrontDoorWSSCfg.json
+[D 2022-08-03 12:28:23,240 rivieraCommunication:0301] [:(] Executing ADB shell(device): cat /opt/Bose/etc/FrontDoorWSSCfg.json
+[I 2022-08-03 12:28:23,302 rivieraUtils:1642] [:(] disablePolicyCheck is already True!
+[D 2022-08-03 12:28:23,302 rivieraCommunication:0301] [:(] Executing ADB shell(device): grep -ie '\"disableWSSProductToProduct\":\s*True' /opt/Bose/etc/FrontDoorWSSCfg.json
+[I 2022-08-03 12:28:23,356 rivieraUtils:1617] [:(] Updating disableWSSProductToProduct to True in /opt/Bose/etc/FrontDoorWSSCfg.json
+[D 2022-08-03 12:28:23,356 rivieraCommunication:0301] [:(] Executing ADB shell(device): cat /opt/Bose/etc/FrontDoorWSSCfg.json
+[I 2022-08-03 12:28:23,403 rivieraUtils:1642] [:(] disableWSSProductToProduct is already True!
+[D 2022-08-03 12:28:23,403 rivieraCommunication:0301] [:(] Executing ADB shell(device): grep -ie '\"disableJWTProductToProduct\":\s*True' /opt/Bose/etc/FrontDoorWSSCfg.json
+[I 2022-08-03 12:28:23,456 rivieraUtils:1617] [:(] Updating disableJWTProductToProduct to True in /opt/Bose/etc/FrontDoorWSSCfg.json
+[D 2022-08-03 12:28:23,456 rivieraCommunication:0301] [:(] Executing ADB shell(device): cat /opt/Bose/etc/FrontDoorWSSCfg.json
+[I 2022-08-03 12:28:23,503 rivieraUtils:1642] [:(] disableJWTProductToProduct is already True!
+[D 2022-08-03 12:28:23,503 rivieraCommunication:0301] [:(] Executing ADB shell(device): sync
+[D 2022-08-03 12:28:23,641 conftest:0796] [:(] Enable the HFP configuration
+[D 2022-08-03 12:28:23,641 rivieraUtils:1987] [:(] Enable the HFAG profile
+[D 2022-08-03 12:28:23,641 rivieraUtils:1976] [:(] check HFAG profile status
+[D 2022-08-03 12:28:23,641 rivieraCommunication:0301] [:(] Executing ADB shell(device): cat /opt/Bose/etc/BTConfig.xml
+[I 2022-08-03 12:28:23,688 rivieraUtils:2001] [:(] HFAG profile already enabled
+[I 2022-08-03 12:28:23,688 conftest:0811] [:(]  For loop_count 5
+[I 2022-08-03 12:28:23,703 conftest:0814] [:(]  Capture duration None
+[I 2022-08-03 12:28:23,703 conftest:0817] [:(]  Selected AAC Codec False
+[I 2022-08-03 12:28:23,703 conftest:0829] [:(]  Test Run Type 0
+=========================================================================================================== test session starts ============================================================================================================
+platform win32 -- Python 3.8.0, pytest-6.2.1, py-1.11.0, pluggy-0.13.1 -- C:\Users\111440\SpitfireWorkspace\testEnv\Scripts\python.exe
+cachedir: .pytest_cache
+metadata: {'Python': '3.8.0', 'Platform': 'Windows-10-10.0.19041-SP0', 'Packages': {'pytest': '6.2.1', 'py': '1.11.0', 'pluggy': '0.13.1'}, 'Plugins': {'base-url': '2.0.0', 'cov': '2.8.1', 'dependency': '0.5.1', 'flask': '1.0.0', 'html': '3.1.1', 'metadata': '2.0.2', 'pythonpath': '0.7.3', 'repeat': '0.8.0', 'selenium': '1.17.0', 'testrail': '2.8.3', 'variables': '2.0.0', 'WearableTestUtils': '12.6.1'}, 'Base URL': '', 'Driver': None, 'Capabilities': {}}
+sensitiveurl: .*
+rootdir: C:\Users\111440\SpitfireWorkspace\SpitfireAudioAutomation\Tests, configfile: pytest.ini
+plugins: base-url-2.0.0, cov-2.8.1, dependency-0.5.1, flask-1.0.0, html-3.1.1, metadata-2.0.2, pythonpath-0.7.3, repeat-0.8.0, selenium-1.17.0, testrail-2.8.3, variables-2.0.0, WearableTestUtils-12.6.1
+collected 36 items / 35 deselected / 1 selected
+
+test_tone_play.py::TestTone_Play::test_tone_play_synchronous_after_peer_connect[False-Smalls] [D 2022-08-03 12:28:24,744 conftest:0439] [:(] SpitfireProtoManager
+[I Aug-03 12:28:24.759 PbManager:374] Loading proto 'anr_assert'
+[I Aug-03 12:28:24.759 PbManager:374] Loading proto 'anr_cbm'
+[I Aug-03 12:28:24.759 PbManager:374] Loading proto 'anr_hxm'
+[I Aug-03 12:28:24.775 PbManager:374] Loading proto 'anr_hxs'
+[I Aug-03 12:28:24.775 PbManager:374] Loading proto 'API_audio'
+[I Aug-03 12:28:24.775 PbManager:374] Loading proto 'API_mpl'
+[I Aug-03 12:28:24.775 PbManager:374] Loading proto 'API_tel'
+[I Aug-03 12:28:24.791 PbManager:374] Loading proto 'audio_bdsp'
+[I Aug-03 12:28:24.806 PbManager:374] Loading proto 'audio_common_enums'
+[I Aug-03 12:28:24.806 PbManager:374] Loading proto 'audio_latency'
+[I Aug-03 12:28:24.806 PbManager:374] Loading proto 'audio_mic_routing'
+[I Aug-03 12:28:24.806 PbManager:374] Loading proto 'audio_mic_trim'
+[I Aug-03 12:28:24.806 PbManager:374] Loading proto 'audio_output_manager'
+[I Aug-03 12:28:24.822 PbManager:374] Loading proto 'audio_prompt_language'
+[I Aug-03 12:28:24.822 PbManager:374] Loading proto 'audio_single_bud_mode'
+[I Aug-03 12:28:24.822 PbManager:374] Loading proto 'audio_stream_status'
+[I Aug-03 12:28:24.828 PbManager:374] Loading proto 'audio_tones_prompts'
+[I Aug-03 12:28:24.844 PbManager:374] Loading proto 'audio_user_eq_control'
+[I Aug-03 12:28:24.844 PbManager:374] Loading proto 'audio_volume_control'
+[I Aug-03 12:28:24.844 PbManager:374] Loading proto 'aud_music'
+[I Aug-03 12:28:24.844 PbManager:374] Loading proto 'aud_prompt'
+[I Aug-03 12:28:24.844 PbManager:374] Loading proto 'aud_tone'
+[I Aug-03 12:28:24.860 PbManager:374] Loading proto 'aud_voice'
+[I Aug-03 12:28:24.860 PbManager:374] Loading proto 'battery_manager_api'
+[I Aug-03 12:28:24.860 PbManager:374] Loading proto 'battery_manager'
+[I Aug-03 12:28:24.860 PbManager:374] Loading proto 'bluetooth_api'
+[I Aug-03 12:28:24.860 PbManager:374] Loading proto 'clh_spitfire'
+[I Aug-03 12:28:24.875 PbManager:374] Loading proto 'component_state'
+[I Aug-03 12:28:24.875 PbManager:374] Loading proto 'core_address'
+[I Aug-03 12:28:24.875 PbManager:374] Loading proto 'core_api'
+[I Aug-03 12:28:24.891 PbManager:374] Loading proto 'core_handover'
+[I Aug-03 12:28:24.891 PbManager:374] Loading proto 'core_msg_header'
+[I Aug-03 12:28:24.891 PbManager:374] Loading proto 'dc_counter'
+[I Aug-03 12:28:24.907 PbManager:374] Loading proto 'dc_ets'
+[I Aug-03 12:28:24.907 PbManager:374] Loading proto 'mpl_controls'
+[I Aug-03 12:28:24.907 PbManager:374] Loading proto 'mpl_nowplaying_status'
+[I Aug-03 12:28:24.922 PbManager:374] Loading proto 'mpl_stream_status'
+[I Aug-03 12:28:24.922 PbManager:374] Loading proto 'nanopb'
+[I Aug-03 12:28:24.922 PbManager:374] Loading proto 'power_manager'
+[I Aug-03 12:28:24.929 PbManager:374] Loading proto 'smartanr_api'
+[I Aug-03 12:28:24.929 PbManager:374] Loading proto 'tco_hello'
+[I Aug-03 12:28:24.929 PbManager:374] Loading proto 'tel_call_event'
+[I Aug-03 12:28:24.929 PbManager:374] Loading proto 'tel_connection_status'
+[I Aug-03 12:28:24.929 PbManager:374] Loading proto 'tel_controls'
+[I Aug-03 12:28:24.929 PbManager:374] Loading proto 'tel_vpa_event'
+[W Aug-03 12:28:24.929 PbManager:396] No entry for proto `anr_assert` found in loaded metadata
+[W Aug-03 12:28:24.929 PbManager:396] No entry for proto `anr_cbm` found in loaded metadata
+[W Aug-03 12:28:24.929 PbManager:396] No entry for proto `anr_hxm` found in loaded metadata
+[W Aug-03 12:28:24.929 PbManager:396] No entry for proto `anr_hxs` found in loaded metadata
+[W Aug-03 12:28:24.929 PbManager:396] No entry for proto `aud_music` found in loaded metadata
+[W Aug-03 12:28:24.929 PbManager:396] No entry for proto `aud_prompt` found in loaded metadata
+[W Aug-03 12:28:24.929 PbManager:396] No entry for proto `aud_tone` found in loaded metadata
+[W Aug-03 12:28:24.929 PbManager:396] No entry for proto `aud_voice` found in loaded metadata
+[W Aug-03 12:28:24.929 PbManager:396] No entry for proto `clh_spitfire` found in loaded metadata
+[W Aug-03 12:28:24.929 PbManager:396] No entry for proto `component_state` found in loaded metadata
+[W Aug-03 12:28:24.929 PbManager:396] No entry for proto `core_handover` found in loaded metadata
+[W Aug-03 12:28:24.929 PbManager:396] No entry for proto `dc_counter` found in loaded metadata
+[W Aug-03 12:28:24.944 PbManager:396] No entry for proto `dc_ets` found in loaded metadata
+[W Aug-03 12:28:24.944 PbManager:396] No entry for proto `nanopb` found in loaded metadata
+[W Aug-03 12:28:24.944 PbManager:396] No entry for proto `tco_hello` found in loaded metadata
+[I Aug-03 12:28:24.944 PbManager:410] Loaded 45 protobufs
+[D 2022-08-03 12:28:24,944 conftest:0384] [:(] Invoking polycom Fixture
+[D 2022-08-03 12:28:28,357 conftest:0413] [:(] Downloading BMAP from: http://hepdsw-web.bose.com/ec/prod/BMAP/Continuous/master/
+[D 2022-08-03 12:28:30,499 conftest:0325] [:(] Invoking sink Fixture
+[D 2022-08-03 12:28:30,515 conftest:0334] [:(] [<pypolycomm.hidpolycommdevice.HidPolyCommDevice object at 0x0000024326B76E80>, <pypolycomm.hidpolycommdevice.HidPolyCommDevice object at 0x0000024326BAD280>]
+[D 2022-08-03 12:28:30,515 conftest:0337] [:(] Smalls [C1-Smalls-R]
+[D 2022-08-03 12:28:30,515 conftest:0339] [:(] Filter based on serial number.
+[D 2022-08-03 12:28:30,515 conftest:0337] [:(] Smalls [C1-Smalls-L]
+[D 2022-08-03 12:28:30,515 conftest:0339] [:(] Filter based on serial number.
+[I 2022-08-03 12:28:30,578 bt_spitfire_helper:0139] [:(] Right: __init__
+[I 2022-08-03 12:28:30,578 SpitfireComponentMessaging:0246] [:(] Right: _register_for_event(aud): event_id: 0
+[I 2022-08-03 12:28:30,584 SpitfireComponentMessaging:0246] [:(] Right: _register_for_event(aud): event_id: 1
+[I 2022-08-03 12:28:30,584 SpitfireComponentMessaging:0246] [:(] Right: _register_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:30,584 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:30,584 SpitfireComponentMessaging:0246] [:(] Right: _register_for_event(mpl): event_id: 0
+[I 2022-08-03 12:28:30,584 SpitfireComponentMessaging:0246] [:(] Right: _register_for_event(mpl): event_id: 1
+[I 2022-08-03 12:28:30,584 SpitfireComponentMessaging:0246] [:(] Right: _register_for_event(mpl): event_id: 2
+[I 2022-08-03 12:28:30,584 SpitfireComponentMessaging:0246] [:(] Right: _register_for_event(tel): event_id: 0
+[I 2022-08-03 12:28:30,584 SpitfireComponentMessaging:0246] [:(] Right: _register_for_event(tel): event_id: 1
+[I 2022-08-03 12:28:30,584 SpitfireComponentMessaging:0246] [:(] Right: _register_for_event(tel): event_id: 2
+[I 2022-08-03 12:28:30,584 SpitfireComponentMessaging:0246] [:(] Right: _register_for_event(bt): event_id: 0
+[I 2022-08-03 12:28:30,600 SpitfireComponentMessaging:0246] [:(] Right: _register_for_event(bt): event_id: 3
+[I 2022-08-03 12:28:30,600 SpitfireComponentMessaging:0246] [:(] Right: _register_for_event(bt): event_id: 6
+[I 2022-08-03 12:28:30,600 SpitfireComponentMessaging:0246] [:(] Right: _register_for_event(anr): event_id: 3
+[I 2022-08-03 12:28:30,600 SpitfireComponentMessaging:0246] [:(] Right: _register_for_event(cor): event_id: 18
+[I 2022-08-03 12:28:30,600 bt_spitfire_helper:0157] [:(] Right: Spitfire firmware version response: version: SpitfireCoreServices//58.2.2+gc4d4a4ee@BoseCorp/master:package_id_unknown Unknown.spitfire-pod-nszlz.2022-07-06T17:28:14
+[I 2022-08-03 12:28:30,615 sink_group:0086] [:(] get_mac: RIGHT
+[I 2022-08-03 12:28:30,615 bt_spitfire_helper:0199] [:(] Right: get_mac
+[I 2022-08-03 12:28:30,615 SpitfireBluetoothMessage:0256] [:(] Right: get_mac_based_on_role
+[I 2022-08-03 12:28:30,615 SpitfireComponentMessaging:0210] [:(] Right: send_request(bt): message_id= 17
+[D Aug-03 12:28:30.615 SpitfireMessaging:361] Sending request with transaction id 0 (0x0)
+[D Aug-03 12:28:30.631 SpitfireMessaging:434] __dispatch_message: success
+[I 2022-08-03 12:28:30,631 SpitfireComponentMessaging:0261] [:(] Right: wait_for_response(bt): message_id: 17 and request_id: 1
+[I 2022-08-03 12:28:30,731 SpitfireComponentMessaging:0199] [:(] Right: Response(bt): message_id: 17, request_id: 1
+ --- payload---
+bluetooth_addr {
+  nap: 30763
+  uap: 100
+  lap: 8144318
+}
+
+
+[I 2022-08-03 12:28:30,731 SpitfireBluetoothMessage:0268] [:(] Right: response: bluetooth_addr {
+  nap: 30763
+  uap: 100
+  lap: 8144318
+}
+
+[I 2022-08-03 12:28:30,731 bt_spitfire_helper:0202] [:(] Right: get_mac: 78:2b:64:7c:45:be
+[I 2022-08-03 12:28:30,731 bt_spitfire_group_helper:0036] [:(] This is right -> Smalls [C1-Smalls-R] MAC: 78:2b:64:7c:45:be  sinkRight: <bt_spitfire_helper.BTSpitfireHelper object at 0x0000024326B76700>
+[I 2022-08-03 12:28:30,800 bt_spitfire_helper:0139] [:(] Left: __init__
+[I 2022-08-03 12:28:30,800 SpitfireComponentMessaging:0246] [:(] Left: _register_for_event(aud): event_id: 0
+[I 2022-08-03 12:28:30,800 SpitfireComponentMessaging:0246] [:(] Left: _register_for_event(aud): event_id: 1
+[I 2022-08-03 12:28:30,800 SpitfireComponentMessaging:0246] [:(] Left: _register_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:30,816 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:30,816 SpitfireComponentMessaging:0246] [:(] Left: _register_for_event(mpl): event_id: 0
+[I 2022-08-03 12:28:30,816 SpitfireComponentMessaging:0246] [:(] Left: _register_for_event(mpl): event_id: 1
+[I 2022-08-03 12:28:30,816 SpitfireComponentMessaging:0246] [:(] Left: _register_for_event(mpl): event_id: 2
+[I 2022-08-03 12:28:30,816 SpitfireComponentMessaging:0246] [:(] Left: _register_for_event(tel): event_id: 0
+[I 2022-08-03 12:28:30,816 SpitfireComponentMessaging:0246] [:(] Left: _register_for_event(tel): event_id: 1
+[I 2022-08-03 12:28:30,816 SpitfireComponentMessaging:0246] [:(] Left: _register_for_event(tel): event_id: 2
+[I 2022-08-03 12:28:30,816 SpitfireComponentMessaging:0246] [:(] Left: _register_for_event(bt): event_id: 0
+[I 2022-08-03 12:28:30,816 SpitfireComponentMessaging:0246] [:(] Left: _register_for_event(bt): event_id: 3
+[I 2022-08-03 12:28:30,816 SpitfireComponentMessaging:0246] [:(] Left: _register_for_event(bt): event_id: 6
+[I 2022-08-03 12:28:30,832 SpitfireComponentMessaging:0246] [:(] Left: _register_for_event(anr): event_id: 3
+[I 2022-08-03 12:28:30,832 SpitfireComponentMessaging:0246] [:(] Left: _register_for_event(cor): event_id: 18
+[I 2022-08-03 12:28:30,832 bt_spitfire_helper:0157] [:(] Left: Spitfire firmware version response: version: SpitfireCoreServices//58.2.2+gc4d4a4ee@BoseCorp/master:package_id_unknown Unknown.spitfire-pod-nszlz.2022-07-06T17:28:14
+[I 2022-08-03 12:28:30,847 sink_group:0086] [:(] get_mac: LEFT
+[I 2022-08-03 12:28:30,847 bt_spitfire_helper:0199] [:(] Left: get_mac
+[I 2022-08-03 12:28:30,847 SpitfireBluetoothMessage:0256] [:(] Left: get_mac_based_on_role
+[I 2022-08-03 12:28:30,847 SpitfireComponentMessaging:0210] [:(] Left: send_request(bt): message_id= 17
+[D Aug-03 12:28:30.847 SpitfireMessaging:361] Sending request with transaction id 0 (0x0)
+[D Aug-03 12:28:30.863 SpitfireMessaging:434] __dispatch_message: success
+[I 2022-08-03 12:28:30,863 SpitfireComponentMessaging:0261] [:(] Left: wait_for_response(bt): message_id: 17 and request_id: 1
+[I 2022-08-03 12:28:30,963 SpitfireComponentMessaging:0199] [:(] Left: Response(bt): message_id: 17, request_id: 1
+ --- payload---
+bluetooth_addr {
+  nap: 30763
+  uap: 100
+  lap: 8144318
+}
+
+
+[I 2022-08-03 12:28:30,963 SpitfireBluetoothMessage:0268] [:(] Left: response: bluetooth_addr {
+  nap: 30763
+  uap: 100
+  lap: 8144318
+}
+
+[I 2022-08-03 12:28:30,963 bt_spitfire_helper:0202] [:(] Left: get_mac: 78:2b:64:7c:45:be
+[I 2022-08-03 12:28:30,963 bt_spitfire_group_helper:0041] [:(] This is left -> Smalls [C1-Smalls-L] MAC: 78:2b:64:7c:45:be  sinkLeft: <bt_spitfire_helper.BTSpitfireHelper object at 0x0000024328759A60>
+[D 2022-08-03 12:28:30,963 conftest:0374] [:(] Invoking audioPrepareOutput Fixture
+[I 2022-08-03 12:28:30,963 sink_group:0086] [:(] send_audio_prepare_output_request: BOTH
+[I 2022-08-03 12:28:30,963 SpitfireAudioMessage:0708] [:(] Right: send_audio_prepare_output_request for prepare: True chain: True hwPower: True, unlock: True
+[I 2022-08-03 12:28:30,963 SpitfireComponentMessaging:0210] [:(] Right: send_request(aud): message_id= 35
+[D Aug-03 12:28:30.963 SpitfireMessaging:361] Sending request with transaction id 1 (0x1)
+[D Aug-03 12:28:30.985 SpitfireMessaging:434] __dispatch_message: success
+[I 2022-08-03 12:28:30,985 SpitfireAudioMessage:0708] [:(] Left: send_audio_prepare_output_request for prepare: True chain: True hwPower: True, unlock: True
+[I 2022-08-03 12:28:30,985 SpitfireComponentMessaging:0210] [:(] Left: send_request(aud): message_id= 35
+[D Aug-03 12:28:30.985 SpitfireMessaging:361] Sending request with transaction id 1 (0x1)
+[D Aug-03 12:28:30.985 SpitfireMessaging:434] __dispatch_message: success
+[I 2022-08-03 12:28:30,985 sink_group:0086] [:(] check_audio_prepare_output_event: BOTH
+[I 2022-08-03 12:28:30,985 SpitfireAudioMessage:0744] [:(] Right: check_audio_prepare_output_event: prepared: True, chain: True, hwPower: True, unlock: True, timeout_s: 10
+[W 2022-08-03 12:28:30,985 api:0040] [:(] Right: Current Audio event prepared state False is not as expected True, retrying in 1 seconds...
+[I 2022-08-03 12:28:31,349 SpitfireComponentMessaging:0238] [:(] Right: _event_callback_function(aud): context= 3
+[I 2022-08-03 12:28:31,349 SpitfireComponentMessaging:0082] [:(] Right: Got 'aud' Event: 3
+ --- Data ---
+state {
+  chain: true
+}
+
+[I 2022-08-03 12:28:31,349 SpitfireAudioMessage:0055] [:(] Right: _monitor_audio_prepare_output_event: response: state {
+  chain: true
+}
+
+[I 2022-08-03 12:28:31,349 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:31,365 SpitfireComponentMessaging:0199] [:(] Right: Response(aud): message_id: 35, request_id: 1
+ --- payload---
+success: true
+
+
+[I 2022-08-03 12:28:31,365 SpitfireComponentMessaging:0238] [:(] Left: _event_callback_function(aud): context= 3
+[I 2022-08-03 12:28:31,365 SpitfireComponentMessaging:0082] [:(] Left: Got 'aud' Event: 3
+ --- Data ---
+state {
+  chain: true
+}
+
+[I 2022-08-03 12:28:31,365 SpitfireAudioMessage:0055] [:(] Left: _monitor_audio_prepare_output_event: response: state {
+  chain: true
+}
+
+[I 2022-08-03 12:28:31,365 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:31,380 SpitfireComponentMessaging:0238] [:(] Right: _event_callback_function(anr): context= 3
+[I 2022-08-03 12:28:31,380 SpitfireComponentMessaging:0199] [:(] Left: Response(aud): message_id: 35, request_id: 1
+ --- payload---
+success: true
+
+
+[I 2022-08-03 12:28:31,380 SpitfireComponentMessaging:0082] [:(] Right: Got 'anr' Event: 3
+ --- Data ---
+status: SMARTANR_POWER_STATUS_POWERING_ON
+
+[I 2022-08-03 12:28:31,403 SpitfireComponentMessaging:0238] [:(] Left: _event_callback_function(anr): context= 3
+[I 2022-08-03 12:28:31,403 SpitfireComponentMessaging:0082] [:(] Left: Got 'anr' Event: 3
+ --- Data ---
+status: SMARTANR_POWER_STATUS_POWERING_ON
+
+[W 2022-08-03 12:28:32,004 api:0040] [:(] Right: Current Audio event prepared state False is not as expected True, retrying in 1 seconds...
+[I 2022-08-03 12:28:32,105 SpitfireComponentMessaging:0238] [:(] Left: _event_callback_function(anr): context= 3
+[I 2022-08-03 12:28:32,105 SpitfireComponentMessaging:0082] [:(] Left: Got 'anr' Event: 3
+ --- Data ---
+status: SMARTANR_POWER_STATUS_POWERING_ON
+
+[I 2022-08-03 12:28:32,105 SpitfireComponentMessaging:0238] [:(] Right: _event_callback_function(anr): context= 3
+[I 2022-08-03 12:28:32,105 SpitfireComponentMessaging:0082] [:(] Right: Got 'anr' Event: 3
+ --- Data ---
+status: SMARTANR_POWER_STATUS_POWERING_ON
+
+[I 2022-08-03 12:28:32,120 SpitfireComponentMessaging:0238] [:(] Right: _event_callback_function(anr): context= 3
+[I 2022-08-03 12:28:32,120 SpitfireComponentMessaging:0082] [:(] Right: Got 'anr' Event: 3
+ --- Data ---
+status: SMARTANR_POWER_STATUS_ON
+
+[I 2022-08-03 12:28:32,136 SpitfireComponentMessaging:0238] [:(] Right: _event_callback_function(aud): context= 3
+[I 2022-08-03 12:28:32,136 SpitfireComponentMessaging:0238] [:(] Left: _event_callback_function(anr): context= 3
+[I 2022-08-03 12:28:32,136 SpitfireComponentMessaging:0082] [:(] Right: Got 'aud' Event: 3
+ --- Data ---
+state {
+  chain: true
+  hwPower: true
+}
+
+[I 2022-08-03 12:28:32,136 SpitfireComponentMessaging:0082] [:(] Left: Got 'anr' Event: 3
+ --- Data ---
+status: SMARTANR_POWER_STATUS_ON
+
+[I 2022-08-03 12:28:32,136 SpitfireAudioMessage:0055] [:(] Right: _monitor_audio_prepare_output_event: response: state {
+  chain: true
+  hwPower: true
+}
+
+[I 2022-08-03 12:28:32,136 SpitfireComponentMessaging:0238] [:(] Left: _event_callback_function(aud): context= 3
+[I 2022-08-03 12:28:32,136 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:32,136 SpitfireComponentMessaging:0082] [:(] Left: Got 'aud' Event: 3
+ --- Data ---
+state {
+  chain: true
+  hwPower: true
+}
+
+[I 2022-08-03 12:28:32,136 SpitfireAudioMessage:0055] [:(] Left: _monitor_audio_prepare_output_event: response: state {
+  chain: true
+  hwPower: true
+}
+
+[I 2022-08-03 12:28:32,136 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:32,151 SpitfireComponentMessaging:0238] [:(] Left: _event_callback_function(aud): context= 3
+[I 2022-08-03 12:28:32,151 SpitfireComponentMessaging:0238] [:(] Right: _event_callback_function(aud): context= 3
+[I 2022-08-03 12:28:32,151 SpitfireComponentMessaging:0082] [:(] Left: Got 'aud' Event: 3
+ --- Data ---
+prepared: true
+state {
+  chain: true
+  hwPower: true
+  unlock: true
+}
+
+[I 2022-08-03 12:28:32,151 SpitfireComponentMessaging:0082] [:(] Right: Got 'aud' Event: 3
+ --- Data ---
+prepared: true
+state {
+  chain: true
+  hwPower: true
+  unlock: true
+}
+
+[I 2022-08-03 12:28:32,151 SpitfireAudioMessage:0055] [:(] Right: _monitor_audio_prepare_output_event: response: prepared: true
+state {
+  chain: true
+  hwPower: true
+  unlock: true
+}
+
+[I 2022-08-03 12:28:32,151 SpitfireAudioMessage:0055] [:(] Left: _monitor_audio_prepare_output_event: response: prepared: true
+state {
+  chain: true
+  hwPower: true
+  unlock: true
+}
+
+[I 2022-08-03 12:28:32,151 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:32,151 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:33,007 SpitfireAudioMessage:0763] [:(] Right: Got expected Audio output event: prepared True, chain True, hwPower True, unlock True : prepared: true
+state {
+  chain: true
+  hwPower: true
+  unlock: true
+}
+
+[I 2022-08-03 12:28:33,007 SpitfireAudioMessage:0744] [:(] Left: check_audio_prepare_output_event: prepared: True, chain: True, hwPower: True, unlock: True, timeout_s: 10
+[I 2022-08-03 12:28:33,007 SpitfireAudioMessage:0763] [:(] Left: Got expected Audio output event: prepared True, chain True, hwPower True, unlock True : prepared: true
+state {
+  chain: true
+  hwPower: true
+  unlock: true
+}
+
+[I 2022-08-03 12:28:33,007 conftest:0663] [:(] --------------------------------------------
+[I 2022-08-03 12:28:33,007 conftest:0664] [:(] function    : test_tone_play_synchronous_after_peer_connect
+[I 2022-08-03 12:28:33,007 conftest:0665] [:(] test name   : test_tone_play.py::TestTone_Play::test_tone_play_synchronous_after_peer_connect[False-Smalls]
+[I 2022-08-03 12:28:33,007 conftest:0666] [:(] time        : Wed Aug  3 12:28:33 2022
+[I 2022-08-03 12:28:33,007 conftest:0667] [:(] ----------------------------------------------
+[D 2022-08-03 12:28:33,007 conftest:0465] [:(] Invoking logread fixture
+[I 2022-08-03 12:28:33,007 conftest:0478] [:(] --- SKIPPING LOGREAD and LOGCAT ---
+[I 2022-08-03 12:28:33,007 conftest:0101] [:(] Invoking skip_test_if_condition
+[I 2022-08-03 12:28:33,007 conftest:0683] [:(] -----------------------
+[I 2022-08-03 12:28:33,007 conftest:0684] [:(] TEST SETUP PASSED
+[I 2022-08-03 12:28:33,007 conftest:0685] [:(] Test: test_tone_play.py::TestTone_Play::test_tone_play_synchronous_after_peer_connect[False-Smalls]
+[I 2022-08-03 12:28:33,007 conftest:0686] [:(] DateTime: 2022-08-03 12:28:33.007103
+[I 2022-08-03 12:28:33,007 conftest:0687] [:(] ------------------------
+[I 2022-08-03 12:28:33,007 test_tone_play:1902] [:(] TEST: test_tone_play_synchronous_after_peer_connect
+[I 2022-08-03 12:28:33,007 sink_group:0086] [:(] send_radio_transmitter_request: LEFT
+[I 2022-08-03 12:28:33,007 SpitfireBluetoothMessage:0214] [:(] Left: send_radio_transmitter_request for enable: False
+[I 2022-08-03 12:28:33,007 SpitfireComponentMessaging:0210] [:(] Left: send_request(bt): message_id= 31
+[D Aug-03 12:28:33.007 SpitfireMessaging:361] Sending request with transaction id 2 (0x2)
+[D Aug-03 12:28:33.022 SpitfireMessaging:434] __dispatch_message: success
+[I 2022-08-03 12:28:33,022 sink_group:0030] [:(] check_radio_transmitter_response: LEFT
+[I 2022-08-03 12:28:33,022 SpitfireBluetoothMessage:0227] [:(] Left: check_radio_transmitter_response: request_id: 2
+[I 2022-08-03 12:28:33,022 SpitfireComponentMessaging:0261] [:(] Left: wait_for_response(bt): message_id: 31 and request_id: 2
+[I 2022-08-03 12:28:33,069 SpitfireComponentMessaging:0199] [:(] Left: Response(bt): message_id: 31, request_id: 2
+ --- payload---
+success: true
+
+
+[I 2022-08-03 12:28:33,069 SpitfireBluetoothMessage:0234] [:(] Left:  response: success: true
+
+[I 2022-08-03 12:28:33,069 sink_group:0086] [:(] send_tone_play_request: RIGHT
+[I 2022-08-03 12:28:33,069 SpitfireAudioMessage:0141] [:(] Right: send_tone_play_request for tone_id: 1, tone_priority: 3, stream_id: 100, volume: 0, local_only: True
+[I 2022-08-03 12:28:33,069 SpitfireComponentMessaging:0210] [:(] Right: send_request(aud): message_id= 8
+[D Aug-03 12:28:33.069 SpitfireMessaging:361] Sending request with transaction id 2 (0x2)
+[D Aug-03 12:28:33.085 SpitfireMessaging:434] __dispatch_message: success
+[I 2022-08-03 12:28:33,085 sink_group:0086] [:(] check_audio_stream_status: RIGHT
+[I 2022-08-03 12:28:33,091 SpitfireAudioMessage:0246] [:(] Right: check_audio_stream_status: Event: 0, Expected Stream type: 2, State: 3, DuckedState: 1, expected_reason: None, stream_id: 100
+[I 2022-08-03 12:28:33,091 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 0
+[I 2022-08-03 12:28:33,138 SpitfireComponentMessaging:0238] [:(] Right: _event_callback_function(aud): context= 0
+[I 2022-08-03 12:28:33,138 SpitfireComponentMessaging:0082] [:(] Right: Got 'aud' Event: 0
+ --- Data ---
+streamStatus {
+  transactionId: 100
+  componentId: 1
+  streamType: TONE
+  streamState: PREPARING
+  duckedState: FRONTED
+  playbackPriority: PRIORITY_HIGH
+  toneArgs {
+    toneId: 1
+  }
+}
+
+[W 2022-08-03 12:28:33,138 api:0040] [:(] Right: Current Audio stream state 2 is not as expected 3, retrying in 1 seconds...
+[W 2022-08-03 12:28:33,154 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 3
+[W 2022-08-03 12:28:33,154 SpitfireComponentMessaging:0100] [:(] Left: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:33,154 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:33,154 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:33,170 SpitfireComponentMessaging:0199] [:(] Right: Response(aud): message_id: 8, request_id: 2
+ --- payload---
+playRequestSucceeded: true
+streamStatus {
+  transactionId: 100
+  componentId: 1
+  streamType: TONE
+  streamState: PREPARING
+  duckedState: FRONTED
+  playbackPriority: PRIORITY_HIGH
+  toneArgs {
+    toneId: 1
+  }
+}
+
+
+[I 2022-08-03 12:28:33,185 SpitfireComponentMessaging:0238] [:(] Right: _event_callback_function(aud): context= 0
+[I 2022-08-03 12:28:33,185 SpitfireComponentMessaging:0082] [:(] Right: Got 'aud' Event: 0
+ --- Data ---
+streamStatus {
+  transactionId: 100
+  componentId: 1
+  streamType: TONE
+  streamState: PLAYING
+  duckedState: FRONTED
+  playbackPriority: PRIORITY_HIGH
+  toneArgs {
+    toneId: 1
+  }
+}
+
+[I 2022-08-03 12:28:34,141 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 0
+[I 2022-08-03 12:28:34,141 SpitfireAudioMessage:0269] [:(] Right: Got expected Audio stream event: stream type 2, state 3, ducked_state 1, streamStatus {
+  transactionId: 100
+  componentId: 1
+  streamType: TONE
+  streamState: PLAYING
+  duckedState: FRONTED
+  playbackPriority: PRIORITY_HIGH
+  toneArgs {
+    toneId: 1
+  }
+}
+
+[I 2022-08-03 12:28:34,141 sink_group:0086] [:(] send_radio_transmitter_request: LEFT
+[I 2022-08-03 12:28:34,141 SpitfireBluetoothMessage:0214] [:(] Left: send_radio_transmitter_request for enable: True
+[I 2022-08-03 12:28:34,141 SpitfireComponentMessaging:0210] [:(] Left: send_request(bt): message_id= 31
+[D Aug-03 12:28:34.141 SpitfireMessaging:361] Sending request with transaction id 3 (0x3)
+[W 2022-08-03 12:28:34,156 SpitfireComponentMessaging:0100] [:(] Left: Queue is empty for 'aud' event_id: 3
+[D Aug-03 12:28:34.156 SpitfireMessaging:434] __dispatch_message: success
+[W 2022-08-03 12:28:34,156 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:34,156 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:34,156 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:34,156 sink_group:0030] [:(] check_radio_transmitter_response: LEFT
+[I 2022-08-03 12:28:34,156 SpitfireBluetoothMessage:0227] [:(] Left: check_radio_transmitter_response: request_id: 3
+[I 2022-08-03 12:28:34,156 SpitfireComponentMessaging:0261] [:(] Left: wait_for_response(bt): message_id: 31 and request_id: 3
+[I 2022-08-03 12:28:34,210 SpitfireComponentMessaging:0199] [:(] Left: Response(bt): message_id: 31, request_id: 3
+ --- payload---
+success: true
+
+
+[I 2022-08-03 12:28:34,210 SpitfireBluetoothMessage:0234] [:(] Left:  response: success: true
+
+[I 2022-08-03 12:28:34,210 sink_group:0086] [:(] send_tone_play_request: RIGHT
+[I 2022-08-03 12:28:34,225 SpitfireAudioMessage:0141] [:(] Right: send_tone_play_request for tone_id: 5, tone_priority: 2, stream_id: 102, volume: 0, local_only: False
+[I 2022-08-03 12:28:34,225 SpitfireComponentMessaging:0210] [:(] Right: send_request(aud): message_id= 8
+[D Aug-03 12:28:34.225 SpitfireMessaging:361] Sending request with transaction id 3 (0x3)
+[D Aug-03 12:28:34.241 SpitfireMessaging:434] __dispatch_message: success
+[I 2022-08-03 12:28:34,241 sink_group:0086] [:(] check_audio_stream_status: RIGHT
+[I 2022-08-03 12:28:34,241 SpitfireAudioMessage:0246] [:(] Right: check_audio_stream_status: Event: 0, Expected Stream type: 2, State: 1, DuckedState: 0, expected_reason: None, stream_id: 102
+[I 2022-08-03 12:28:34,257 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 0
+[I 2022-08-03 12:28:34,288 SpitfireComponentMessaging:0238] [:(] Right: _event_callback_function(aud): context= 0
+[I 2022-08-03 12:28:34,288 SpitfireComponentMessaging:0082] [:(] Right: Got 'aud' Event: 0
+ --- Data ---
+streamStatus {
+  transactionId: 102
+  componentId: 1
+  streamType: TONE
+  streamState: QUEUED
+  playbackPriority: PRIORITY_MEDIUM
+  toneArgs {
+    toneId: 5
+  }
+}
+
+[I 2022-08-03 12:28:34,294 SpitfireAudioMessage:0269] [:(] Right: Got expected Audio stream event: stream type 2, state 1, ducked_state 0, streamStatus {
+  transactionId: 102
+  componentId: 1
+  streamType: TONE
+  streamState: QUEUED
+  playbackPriority: PRIORITY_MEDIUM
+  toneArgs {
+    toneId: 5
+  }
+}
+
+[I 2022-08-03 12:28:34,294 sink_group:0086] [:(] check_audio_stream_status: RIGHT
+[I 2022-08-03 12:28:34,294 SpitfireAudioMessage:0246] [:(] Right: check_audio_stream_status: Event: 0, Expected Stream type: 2, State: 4, DuckedState: 1, expected_reason: 2, stream_id: 100
+[I 2022-08-03 12:28:34,294 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 0
+[I 2022-08-03 12:28:34,310 SpitfireComponentMessaging:0199] [:(] Right: Response(aud): message_id: 8, request_id: 3
+ --- payload---
+playRequestSucceeded: true
+streamStatus {
+  transactionId: 102
+  componentId: 1
+  streamType: TONE
+  streamState: QUEUED
+  playbackPriority: PRIORITY_MEDIUM
+  toneArgs {
+    toneId: 5
+  }
+}
+
+
+[W 2022-08-03 12:28:35,159 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:35,159 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[W 2022-08-03 12:28:35,159 SpitfireComponentMessaging:0100] [:(] Left: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:35,159 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[W 2022-08-03 12:28:35,313 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 0
+[W 2022-08-03 12:28:35,313 api:0040] [:(] Right: Event 0 wait timed out, retrying in 1 seconds...
+[W 2022-08-03 12:28:36,163 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 3
+[W 2022-08-03 12:28:36,163 SpitfireComponentMessaging:0100] [:(] Left: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:36,163 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:36,163 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:36,317 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 0
+[W 2022-08-03 12:28:37,166 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 3
+[W 2022-08-03 12:28:37,166 SpitfireComponentMessaging:0100] [:(] Left: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:37,166 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:37,166 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[W 2022-08-03 12:28:37,320 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 0
+[W 2022-08-03 12:28:37,320 api:0040] [:(] Right: Event 0 wait timed out, retrying in 1 seconds...
+[W 2022-08-03 12:28:38,169 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 3
+[W 2022-08-03 12:28:38,169 SpitfireComponentMessaging:0100] [:(] Left: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:38,169 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:38,169 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:38,323 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 0
+[W 2022-08-03 12:28:39,172 SpitfireComponentMessaging:0100] [:(] Left: Queue is empty for 'aud' event_id: 3
+[W 2022-08-03 12:28:39,172 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:39,172 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:39,172 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[W 2022-08-03 12:28:39,326 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 0
+[W 2022-08-03 12:28:39,326 api:0040] [:(] Right: Event 0 wait timed out, retrying in 1 seconds...
+[W 2022-08-03 12:28:40,175 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 3
+[W 2022-08-03 12:28:40,175 SpitfireComponentMessaging:0100] [:(] Left: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:40,175 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:40,175 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:40,330 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 0
+[W 2022-08-03 12:28:41,179 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 3
+[W 2022-08-03 12:28:41,179 SpitfireComponentMessaging:0100] [:(] Left: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:41,179 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:41,179 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[W 2022-08-03 12:28:41,332 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 0
+[W 2022-08-03 12:28:41,332 api:0040] [:(] Right: Event 0 wait timed out, retrying in 1 seconds...
+[W 2022-08-03 12:28:42,182 SpitfireComponentMessaging:0100] [:(] Left: Queue is empty for 'aud' event_id: 3
+[W 2022-08-03 12:28:42,182 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:42,182 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:42,182 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:42,335 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 0
+[W 2022-08-03 12:28:43,185 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 3
+[W 2022-08-03 12:28:43,185 SpitfireComponentMessaging:0100] [:(] Left: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:43,185 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:43,185 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[W 2022-08-03 12:28:43,338 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 0
+[W 2022-08-03 12:28:43,338 api:0040] [:(] Right: Event 0 wait timed out, retrying in 1 seconds...
+[I 2022-08-03 12:28:44,040 SpitfireComponentMessaging:0238] [:(] Right: _event_callback_function(aud): context= 0
+[I 2022-08-03 12:28:44,040 SpitfireComponentMessaging:0082] [:(] Right: Got 'aud' Event: 0
+ --- Data ---
+streamStatus {
+  transactionId: 100
+  componentId: 1
+  streamType: TONE
+  streamState: COMPLETED
+  duckedState: FRONTED
+  reason: END_OF_TRACK
+  playbackPriority: PRIORITY_HIGH
+  toneArgs {
+    toneId: 1
+  }
+}
+
+[I 2022-08-03 12:28:44,056 SpitfireComponentMessaging:0238] [:(] Right: _event_callback_function(aud): context= 0
+[I 2022-08-03 12:28:44,056 SpitfireComponentMessaging:0082] [:(] Right: Got 'aud' Event: 0
+ --- Data ---
+streamStatus {
+  transactionId: 102
+  componentId: 1
+  streamType: TONE
+  streamState: PREPARING
+  duckedState: FRONTED
+  playbackPriority: PRIORITY_MEDIUM
+  toneArgs {
+    toneId: 5
+  }
+}
+
+[I 2022-08-03 12:28:44,071 SpitfireComponentMessaging:0238] [:(] Left: _event_callback_function(aud): context= 0
+[I 2022-08-03 12:28:44,071 SpitfireComponentMessaging:0082] [:(] Left: Got 'aud' Event: 0
+ --- Data ---
+streamStatus {
+  transactionId: 164
+  componentId: 1
+  streamType: TONE
+  streamState: PREPARING
+  duckedState: FRONTED
+  playbackPriority: PRIORITY_MEDIUM
+  toneArgs {
+    toneId: 5
+    timeToPlay: 3931745965
+  }
+}
+
+[I 2022-08-03 12:28:44,103 SpitfireComponentMessaging:0238] [:(] Right: _event_callback_function(aud): context= 0
+[I 2022-08-03 12:28:44,103 SpitfireComponentMessaging:0082] [:(] Right: Got 'aud' Event: 0
+ --- Data ---
+streamStatus {
+  transactionId: 102
+  componentId: 1
+  streamType: TONE
+  streamState: PLAYING
+  duckedState: FRONTED
+  playbackPriority: PRIORITY_MEDIUM
+  toneArgs {
+    toneId: 5
+  }
+}
+
+[I 2022-08-03 12:28:44,118 SpitfireComponentMessaging:0238] [:(] Left: _event_callback_function(aud): context= 0
+[I 2022-08-03 12:28:44,118 SpitfireComponentMessaging:0082] [:(] Left: Got 'aud' Event: 0
+ --- Data ---
+streamStatus {
+  transactionId: 164
+  componentId: 1
+  streamType: TONE
+  streamState: PLAYING
+  duckedState: FRONTED
+  playbackPriority: PRIORITY_MEDIUM
+  toneArgs {
+    toneId: 5
+    timeToPlay: 3931745965
+  }
+}
+
+[W 2022-08-03 12:28:44,188 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 3
+[W 2022-08-03 12:28:44,188 SpitfireComponentMessaging:0100] [:(] Left: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:44,188 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:44,188 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:44,342 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 0
+[I 2022-08-03 12:28:44,342 SpitfireAudioMessage:0269] [:(] Right: Got expected Audio stream event: stream type 2, state 4, ducked_state 1, streamStatus {
+  transactionId: 100
+  componentId: 1
+  streamType: TONE
+  streamState: COMPLETED
+  duckedState: FRONTED
+  reason: END_OF_TRACK
+  playbackPriority: PRIORITY_HIGH
+  toneArgs {
+    toneId: 1
+  }
+}
+
+[I 2022-08-03 12:28:44,342 sink_group:0086] [:(] check_audio_stream_status: RIGHT
+[I 2022-08-03 12:28:44,342 SpitfireAudioMessage:0246] [:(] Right: check_audio_stream_status: Event: 0, Expected Stream type: 2, State: 3, DuckedState: 1, expected_reason: None, stream_id: 102
+[I 2022-08-03 12:28:44,342 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 0
+[I 2022-08-03 12:28:44,342 SpitfireAudioMessage:0284] [:(] Right: check_audio_stream_status: queued event_cnt: 1
+[I 2022-08-03 12:28:44,357 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 0
+[I 2022-08-03 12:28:44,357 SpitfireAudioMessage:0269] [:(] Right: Got expected Audio stream event: stream type 2, state 3, ducked_state 1, streamStatus {
+  transactionId: 102
+  componentId: 1
+  streamType: TONE
+  streamState: PLAYING
+  duckedState: FRONTED
+  playbackPriority: PRIORITY_MEDIUM
+  toneArgs {
+    toneId: 5
+  }
+}
+
+[I 2022-08-03 12:28:44,357 sink_group:0086] [:(] check_audio_stream_status: LEFT
+[I 2022-08-03 12:28:44,357 SpitfireAudioMessage:0246] [:(] Left: check_audio_stream_status: Event: 0, Expected Stream type: 2, State: 3, DuckedState: 1, expected_reason: None, stream_id: None
+[I 2022-08-03 12:28:44,373 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 0
+[I 2022-08-03 12:28:44,373 SpitfireAudioMessage:0284] [:(] Left: check_audio_stream_status: queued event_cnt: 1
+[I 2022-08-03 12:28:44,373 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 0
+[I 2022-08-03 12:28:44,373 SpitfireAudioMessage:0269] [:(] Left: Got expected Audio stream event: stream type 2, state 3, ducked_state 1, streamStatus {
+  transactionId: 164
+  componentId: 1
+  streamType: TONE
+  streamState: PLAYING
+  duckedState: FRONTED
+  playbackPriority: PRIORITY_MEDIUM
+  toneArgs {
+    toneId: 5
+    timeToPlay: 3931745965
+  }
+}
+
+[I 2022-08-03 12:28:44,373 sink_group:0086] [:(] check_audio_stream_status: RIGHT
+[I 2022-08-03 12:28:44,373 SpitfireAudioMessage:0246] [:(] Right: check_audio_stream_status: Event: 0, Expected Stream type: 2, State: 4, DuckedState: 1, expected_reason: None, stream_id: 102
+[I 2022-08-03 12:28:44,373 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 0
+[W 2022-08-03 12:28:45,191 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 3
+[W 2022-08-03 12:28:45,191 SpitfireComponentMessaging:0100] [:(] Left: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:45,191 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:45,191 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[W 2022-08-03 12:28:45,376 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 0
+[W 2022-08-03 12:28:45,376 api:0040] [:(] Right: Event 0 wait timed out, retrying in 1 seconds...
+[I 2022-08-03 12:28:45,747 SpitfireComponentMessaging:0238] [:(] Right: _event_callback_function(aud): context= 0
+[I 2022-08-03 12:28:45,747 SpitfireComponentMessaging:0082] [:(] Right: Got 'aud' Event: 0
+ --- Data ---
+streamStatus {
+  transactionId: 102
+  componentId: 1
+  streamType: TONE
+  streamState: COMPLETED
+  duckedState: FRONTED
+  reason: END_OF_TRACK
+  playbackPriority: PRIORITY_MEDIUM
+  toneArgs {
+    toneId: 5
+  }
+}
+
+[I 2022-08-03 12:28:45,747 SpitfireComponentMessaging:0238] [:(] Left: _event_callback_function(aud): context= 0
+[I 2022-08-03 12:28:45,747 SpitfireComponentMessaging:0082] [:(] Left: Got 'aud' Event: 0
+ --- Data ---
+streamStatus {
+  transactionId: 164
+  componentId: 1
+  streamType: TONE
+  streamState: COMPLETED
+  duckedState: FRONTED
+  reason: END_OF_TRACK
+  playbackPriority: PRIORITY_MEDIUM
+  toneArgs {
+    toneId: 5
+    timeToPlay: 3931745965
+  }
+}
+
+[W 2022-08-03 12:28:46,194 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 3
+[W 2022-08-03 12:28:46,194 SpitfireComponentMessaging:0100] [:(] Left: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:46,194 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:46,194 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:46,380 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 0
+[I 2022-08-03 12:28:46,380 SpitfireAudioMessage:0269] [:(] Right: Got expected Audio stream event: stream type 2, state 4, ducked_state 1, streamStatus {
+  transactionId: 102
+  componentId: 1
+  streamType: TONE
+  streamState: COMPLETED
+  duckedState: FRONTED
+  reason: END_OF_TRACK
+  playbackPriority: PRIORITY_MEDIUM
+  toneArgs {
+    toneId: 5
+  }
+}
+
+[I 2022-08-03 12:28:46,380 sink_group:0086] [:(] check_audio_stream_status: LEFT
+[I 2022-08-03 12:28:46,380 SpitfireAudioMessage:0246] [:(] Left: check_audio_stream_status: Event: 0, Expected Stream type: 2, State: 4, DuckedState: 1, expected_reason: None, stream_id: None
+[I 2022-08-03 12:28:46,380 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 0
+[I 2022-08-03 12:28:46,380 SpitfireAudioMessage:0269] [:(] Left: Got expected Audio stream event: stream type 2, state 4, ducked_state 1, streamStatus {
+  transactionId: 164
+  componentId: 1
+  streamType: TONE
+  streamState: COMPLETED
+  duckedState: FRONTED
+  reason: END_OF_TRACK
+  playbackPriority: PRIORITY_MEDIUM
+  toneArgs {
+    toneId: 5
+    timeToPlay: 3931745965
+  }
+}
+
+[I 2022-08-03 12:28:46,395 sink_group:0030] [:(] clear_audio_stream_status: BOTH
+[I 2022-08-03 12:28:46,395 SpitfireComponentMessaging:0323] [:(] Right: clear_event(aud): event_id: 0
+[I 2022-08-03 12:28:46,395 SpitfireComponentMessaging:0323] [:(] Right: clear_event(aud): event_id: 1
+[I 2022-08-03 12:28:46,395 SpitfireComponentMessaging:0323] [:(] Left: clear_event(aud): event_id: 0
+[I 2022-08-03 12:28:46,395 SpitfireComponentMessaging:0323] [:(] Left: clear_event(aud): event_id: 1
+[I 2022-08-03 12:28:46,395 conftest:0697] [:(] -----------------------
+[I 2022-08-03 12:28:46,395 conftest:0698] [:(] TEST PASSED
+[I 2022-08-03 12:28:46,395 conftest:0699] [:(] Test: test_tone_play.py::TestTone_Play::test_tone_play_synchronous_after_peer_connect[False-Smalls]
+[I 2022-08-03 12:28:46,411 conftest:0700] [:(] DateTime: 2022-08-03 12:28:46.411252
+[I 2022-08-03 12:28:46,411 conftest:0701] [:(] ------------------------
+PASSED[I 2022-08-03 12:28:46,411 test_tone_play:1905] [:(] ---------------START TestCase specific TEARDOWN---------------------
+[I 2022-08-03 12:28:46,411 sink_group:0086] [:(] send_radio_transmitter_request: LEFT
+[I 2022-08-03 12:28:46,426 SpitfireBluetoothMessage:0214] [:(] Left: send_radio_transmitter_request for enable: True
+[I 2022-08-03 12:28:46,426 SpitfireComponentMessaging:0210] [:(] Left: send_request(bt): message_id= 31
+[D Aug-03 12:28:46.433 SpitfireMessaging:361] Sending request with transaction id 4 (0x4)
+[D Aug-03 12:28:46.433 SpitfireMessaging:434] __dispatch_message: success
+[I 2022-08-03 12:28:46,433 sink_group:0030] [:(] check_radio_transmitter_response: LEFT
+[I 2022-08-03 12:28:46,433 SpitfireBluetoothMessage:0227] [:(] Left: check_radio_transmitter_response: request_id: 4
+[I 2022-08-03 12:28:46,433 SpitfireComponentMessaging:0261] [:(] Left: wait_for_response(bt): message_id: 31 and request_id: 4
+[I 2022-08-03 12:28:46,480 SpitfireComponentMessaging:0199] [:(] Left: Response(bt): message_id: 31, request_id: 4
+ --- payload---
+success: true
+
+
+[I 2022-08-03 12:28:46,480 SpitfireBluetoothMessage:0234] [:(] Left:  response: success: true
+
+[I 2022-08-03 12:28:46,480 test_tone_play:1909] [:(] -----------------END TestCase specific TEARDOWN------------------
+[I 220803 12:28:46.480 getCoreDumps:55] [:(] Executing connect method
+[I 220803 12:28:46.480 getCoreDumps:59] [:(] Attempting to establish ADB connection using device id
+[W 2022-08-03 12:28:47,198 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 3
+[W 2022-08-03 12:28:47,198 SpitfireComponentMessaging:0100] [:(] Left: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:47,198 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:47,198 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[W 2022-08-03 12:28:48,201 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 3
+[W 2022-08-03 12:28:48,201 SpitfireComponentMessaging:0100] [:(] Left: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:48,201 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:48,201 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[D 220803 12:28:48.533 rivieraCommunication:204] [:(] setCommunicationDetail
+[D 220803 12:28:48.533 rivieraCommunication:206] [:(] Adb get devices
+[D 220803 12:28:48.571 rivieraCommunication:211] [:(] Adb set target device
+[D 220803 12:28:48.571 rivieraCommunication:214] [:(] Adb check target device is set
+[D 220803 12:28:48.655 rivieraCommunication:330] [:(] Device found : ba8bcc5
+[I 220803 12:28:48.655 rivieraCommunication:223] [:(] Connected to device: ba8bcc5
+[I 220803 12:28:48.655 getCoreDumps:62] [:(] Connection established with ba8bcc5
+[I 220803 12:28:48.655 getCoreDumps:154] [:(] Downloading /mnt/nv/BoseLog/ from ba8bcc5
+[I 220803 12:28:48.702 getCoreDumps:164] [:(] No coredump found for ba8bcc5
+[I 2022-08-03 12:28:48,702 sink_group:0086] [:(] send_audio_prepare_output_request: BOTH
+[I 2022-08-03 12:28:48,702 SpitfireAudioMessage:0708] [:(] Right: send_audio_prepare_output_request for prepare: False chain: False hwPower: False, unlock: False
+[I 2022-08-03 12:28:48,718 SpitfireComponentMessaging:0210] [:(] Right: send_request(aud): message_id= 35
+[D Aug-03 12:28:48.718 SpitfireMessaging:361] Sending request with transaction id 4 (0x4)
+[D Aug-03 12:28:48.734 SpitfireMessaging:434] __dispatch_message: success
+[I 2022-08-03 12:28:48,734 SpitfireAudioMessage:0708] [:(] Left: send_audio_prepare_output_request for prepare: False chain: False hwPower: False, unlock: False
+[I 2022-08-03 12:28:48,734 SpitfireComponentMessaging:0210] [:(] Left: send_request(aud): message_id= 35
+[D Aug-03 12:28:48.740 SpitfireMessaging:361] Sending request with transaction id 5 (0x5)
+[I 2022-08-03 12:28:48,756 SpitfireComponentMessaging:0238] [:(] Right: _event_callback_function(aud): context= 3
+[D Aug-03 12:28:48.756 SpitfireMessaging:434] __dispatch_message: success
+[I 2022-08-03 12:28:48,756 SpitfireComponentMessaging:0082] [:(] Right: Got 'aud' Event: 3
+ --- Data ---
+state {
+  chain: true
+  hwPower: true
+}
+
+[I 2022-08-03 12:28:48,756 sink_group:0086] [:(] check_audio_prepare_output_event: BOTH
+[I 2022-08-03 12:28:48,756 SpitfireAudioMessage:0055] [:(] Right: _monitor_audio_prepare_output_event: response: state {
+  chain: true
+  hwPower: true
+}
+
+[I 2022-08-03 12:28:48,756 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:48,756 SpitfireAudioMessage:0744] [:(] Right: check_audio_prepare_output_event: prepared: False, chain: False, hwPower: False, unlock: False, timeout_s: 10
+[W 2022-08-03 12:28:48,771 api:0040] [:(] Right: Current Audio event chain loaded state True is not as expected False, retrying in 1 seconds...
+[I 2022-08-03 12:28:48,803 SpitfireComponentMessaging:0238] [:(] Left: _event_callback_function(aud): context= 3
+[I 2022-08-03 12:28:48,803 SpitfireComponentMessaging:0238] [:(] Right: _event_callback_function(aud): context= 3
+[I 2022-08-03 12:28:48,803 SpitfireComponentMessaging:0082] [:(] Left: Got 'aud' Event: 3
+ --- Data ---
+state {
+  chain: true
+  hwPower: true
+}
+
+[I 2022-08-03 12:28:48,803 SpitfireComponentMessaging:0082] [:(] Right: Got 'aud' Event: 3
+ --- Data ---
+state {
+  hwPower: true
+}
+
+[I 2022-08-03 12:28:48,803 SpitfireAudioMessage:0055] [:(] Left: _monitor_audio_prepare_output_event: response: state {
+  chain: true
+  hwPower: true
+}
+
+[I 2022-08-03 12:28:48,803 SpitfireAudioMessage:0055] [:(] Right: _monitor_audio_prepare_output_event: response: state {
+  hwPower: true
+}
+
+[I 2022-08-03 12:28:48,803 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:48,803 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:48,818 SpitfireComponentMessaging:0199] [:(] Right: Response(aud): message_id: 35, request_id: 4
+ --- payload---
+success: true
+
+
+[I 2022-08-03 12:28:48,834 SpitfireComponentMessaging:0238] [:(] Right: _event_callback_function(aud): context= 3
+[I 2022-08-03 12:28:48,834 SpitfireComponentMessaging:0238] [:(] Left: _event_callback_function(aud): context= 3
+[I 2022-08-03 12:28:48,834 SpitfireComponentMessaging:0082] [:(] Right: Got 'aud' Event: 3
+ --- Data ---
+state {
+}
+
+[I 2022-08-03 12:28:48,834 SpitfireComponentMessaging:0082] [:(] Left: Got 'aud' Event: 3
+ --- Data ---
+state {
+  hwPower: true
+}
+
+[I 2022-08-03 12:28:48,840 SpitfireAudioMessage:0055] [:(] Right: _monitor_audio_prepare_output_event: response: state {
+}
+
+[I 2022-08-03 12:28:48,840 SpitfireComponentMessaging:0199] [:(] Left: Response(aud): message_id: 35, request_id: 2
+ --- payload---
+success: true
+
+
+[I 2022-08-03 12:28:48,840 SpitfireComponentMessaging:0340] [:(] Right: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:48,840 SpitfireAudioMessage:0055] [:(] Left: _monitor_audio_prepare_output_event: response: state {
+  hwPower: true
+}
+
+[I 2022-08-03 12:28:48,840 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:48,856 SpitfireComponentMessaging:0238] [:(] Left: _event_callback_function(aud): context= 3
+[I 2022-08-03 12:28:48,856 SpitfireComponentMessaging:0082] [:(] Left: Got 'aud' Event: 3
+ --- Data ---
+state {
+}
+
+[I 2022-08-03 12:28:48,856 SpitfireAudioMessage:0055] [:(] Left: _monitor_audio_prepare_output_event: response: state {
+}
+
+[I 2022-08-03 12:28:48,856 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:48,872 SpitfireComponentMessaging:0238] [:(] Right: _event_callback_function(anr): context= 3
+[I 2022-08-03 12:28:48,872 SpitfireComponentMessaging:0082] [:(] Right: Got 'anr' Event: 3
+ --- Data ---
+status: SMARTANR_POWER_STATUS_POWERING_OFF
+
+[I 2022-08-03 12:28:48,887 SpitfireComponentMessaging:0238] [:(] Left: _event_callback_function(anr): context= 3
+[I 2022-08-03 12:28:48,887 SpitfireComponentMessaging:0082] [:(] Left: Got 'anr' Event: 3
+ --- Data ---
+status: SMARTANR_POWER_STATUS_POWERING_OFF
+
+[I 2022-08-03 12:28:49,157 SpitfireComponentMessaging:0238] [:(] Left: _event_callback_function(anr): context= 3
+[I 2022-08-03 12:28:49,157 SpitfireComponentMessaging:0238] [:(] Right: _event_callback_function(anr): context= 3
+[I 2022-08-03 12:28:49,157 SpitfireComponentMessaging:0082] [:(] Left: Got 'anr' Event: 3
+ --- Data ---
+status: SMARTANR_POWER_STATUS_OFF
+
+[I 2022-08-03 12:28:49,157 SpitfireComponentMessaging:0082] [:(] Right: Got 'anr' Event: 3
+ --- Data ---
+status: SMARTANR_POWER_STATUS_OFF
+
+[I 2022-08-03 12:28:49,775 SpitfireAudioMessage:0763] [:(] Right: Got expected Audio output event: prepared False, chain False, hwPower False, unlock False : state {
+}
+
+[I 2022-08-03 12:28:49,775 SpitfireAudioMessage:0744] [:(] Left: check_audio_prepare_output_event: prepared: False, chain: False, hwPower: False, unlock: False, timeout_s: 10
+[I 2022-08-03 12:28:49,775 SpitfireAudioMessage:0763] [:(] Left: Got expected Audio output event: prepared False, chain False, hwPower False, unlock False : state {
+}
+
+[D 2022-08-03 12:28:49,775 conftest:0363] [:(] Teardown sink Fixture
+[I 2022-08-03 12:28:49,775 bt_spitfire_group_helper:0056] [:(] clean_up BTSpitfireGroupHelper
+[I 2022-08-03 12:28:49,775 bt_spitfire_helper:0190] [:(] Right: clean_up BTSpitfireHelper
+[I 2022-08-03 12:28:49,775 SpitfireAudioMessage:0046] [:(] Right: stop_audio_prepare_thread
+[W 2022-08-03 12:28:49,860 SpitfireComponentMessaging:0100] [:(] Right: Queue is empty for 'aud' event_id: 3
+[W 2022-08-03 12:28:49,860 SpitfireComponentMessaging:0100] [:(] Left: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:49,860 SpitfireComponentMessaging:0355] [:(] Right: clean_up SpitfireAudioMessage
+[I 2022-08-03 12:28:49,860 SpitfireComponentMessaging:0340] [:(] Left: wait_for_event(aud): event_id: 3
+[I 2022-08-03 12:28:49,860 SpitfireComponentMessaging:0355] [:(] Right: clean_up SpitfireMediaPlayerMessage
+[I 2022-08-03 12:28:49,860 SpitfireComponentMessaging:0355] [:(] Right: clean_up SpitfireTelephonyMessage
+[I 2022-08-03 12:28:49,860 bt_spitfire_helper:0260] [:(] Right: clear_all_events
+[I 2022-08-03 12:28:49,860 bt_spitfire_helper:0190] [:(] Left: clean_up BTSpitfireHelper
+[I 2022-08-03 12:28:49,860 SpitfireAudioMessage:0046] [:(] Left: stop_audio_prepare_thread
+[W 2022-08-03 12:28:50,864 SpitfireComponentMessaging:0100] [:(] Left: Queue is empty for 'aud' event_id: 3
+[I 2022-08-03 12:28:50,864 SpitfireComponentMessaging:0355] [:(] Left: clean_up SpitfireAudioMessage
+[I 2022-08-03 12:28:50,864 SpitfireComponentMessaging:0355] [:(] Left: clean_up SpitfireMediaPlayerMessage
+[I 2022-08-03 12:28:50,864 SpitfireComponentMessaging:0355] [:(] Left: clean_up SpitfireTelephonyMessage
+[I 2022-08-03 12:28:50,895 bt_spitfire_helper:0260] [:(] Left: clear_all_events
+[D 2022-08-03 12:28:50,895 conftest:0427] [:(] Teardown polycom Fixture
+_del_ BTSpitfireGroupHelper
+_del_ BTSpitfireHelper
+_del_ BTSpitfireHelper
+[I 2022-08-03 12:28:50,926 conftest:1048] [:(] Cleanup started at the end of test...
+[I 2022-08-03 12:28:50,948 conftest:1042] [:(] ./LOGS/2022-08-03-12-28-15\POLYCOMM_2022-08-03-12-28-15.txt removed successfully
+
+
+---------------------------------------------------------------------- generated xml file: C:\Users\111440\SpitfireWorkspace\SpitfireAudioAutomation\Tests\report.xml ----------------------------------------------------------------------
+----------------------------------------------------------------- generated html file: file://C:\Users\111440\SpitfireWorkspace\SpitfireAudioAutomation\Tests\report.html ------------------------------------------------------------------
+[I 2022-08-03 12:28:50,948 conftest:0718] [:(] =================== TEST RESULTS ====================
+[I 2022-08-03 12:28:50,948 conftest:0729] [:(]  Passed: 1
+[I 2022-08-03 12:28:50,948 conftest:0731] [:(]    test_tone_play.py::TestTone_Play::test_tone_play_synchronous_after_peer_connect[False-Smalls]
+[I 2022-08-03 12:28:50,948 conftest:0740] [:(]  Failed: 0
+[I 2022-08-03 12:28:50,948 conftest:0747] [:(]  Errors: 0
+[I 2022-08-03 12:28:50,948 conftest:0754] [:(]  Skipped: 0
+[I 2022-08-03 12:28:50,948 conftest:0757] [:(] =========== Passed 1, Failed 0, Error 0, Skipped 0 in 27.22s =============
+[I 2022-08-03 12:28:50,979 conftest:1042] [:(] ./LOGS/2022-08-03-12-28-15\logs_2022-08-03-12-28-15.txt removed successfully
+[I Aug-03 12:28:50.979 report_plugin:52]
+[I Aug-03 12:28:50.995 report_plugin:53] ========================Test execution Summary=========================
+[I Aug-03 12:28:50.995 report_plugin:54] Total Test:36. Passed:1, Failed:0, Skipped:0, Error: 0
+[I Aug-03 12:28:50.995 report_plugin:64] =======================================================================
+============================================================================================== 1 passed, 35 deselected, 3 warnings in 27.27s ===============================================================================================
